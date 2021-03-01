@@ -1,0 +1,667 @@
+@extends('layouts.app')
+
+@section('content')
+<!-- <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="zxx">   
+    <head> 
+        <!-- meta tag -->
+        <meta charset="utf-8">
+        <title>Educavo - Education HTML Template</title>
+        <meta name="description" content="">
+        <!-- responsive tag -->
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/fav.png')}}">
+        <!-- Bootstrap v4.4.1 css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
+        <!-- font-awesome css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.min.css')}}">
+        <!-- animate css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
+        <!-- owl.carousel css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.css')}}">
+        <!-- slick css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick.css')}}">
+        <!-- off canvas css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/off-canvas.css')}}">
+        <!-- linea-font css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/linea-fonts.css')}}">
+        <!-- flaticon css  -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/flaticon.css')}}">
+        <!-- magnific popup css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/magnific-popup.css')}}">
+        <!-- Main Menu css -->
+        <link rel="stylesheet" href="{{asset('assets/css/rsmenu-main.css')}}">
+        <!-- spacing css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/rs-spacing.css')}}">
+        <!-- style css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/style.css')}}"> <!-- This stylesheet dynamically changed from style.less -->
+        <!-- responsive css -->
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+    <body class="home-style5">
+        
+        <!--Preloader area start here-->
+        <div id="loader" class="loader">
+            <div class="loader-container">
+                <div class='loader-icon'>
+                    <img src="{{asset('assets/images/pre-logo.png')}}" alt="">
+                </div>
+            </div>
+        </div>
+        <!--Preloader area End here-->
+
+        <!--Full width header Start-->
+        <div class="full-width-header header-style2">
+            <!--Header Start-->
+            <header id="rs-header" class="rs-header">
+                <!-- Topbar Area Start -->
+                <div class="topbar-area">
+                    <div class="container">
+                        <div class="row y-middle">
+                            <div class="col-md-6">
+                                <ul class="topbar-contact">
+                                    <li>
+                                        <a href="mailto:support@rstheme.com">📍 7th circle - Silawi complex No. 404</a>
+                                    </li>
+                                    <li>
+                                        <a href="tel:+0885898745">🕘 Sun - Thu: 9:00am–4:00pm.</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <ul class="topbar-right">
+                                    <li class="login-register">
+                                        <a href="#">📞 +962 (6) 5815821 | +962 797627466</a>
+                                    </li>
+                                    <li class="btn-part">
+                                        <a class="apply-btn" href="#">Apply Now</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Topbar Area End -->
+
+                <!-- Menu Start -->
+                <div class="menu-area menu-sticky">
+                    <div class="container">
+                        <div class="row y-middle">
+                            <div class="col-lg-5">
+                                <div class="logo-cat-wrap">
+                                    <div class="logo-part pr-90">
+                                        <a class="dark-logo" href="index.html">
+                                            <img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="">
+                                        </a>
+                                        <a class="light-logo" href="index.html">
+                                            <img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="">
+                                        </a>
+                                    </div>
+                                    <!-- <div class="categories-btn">
+                                       <button type="button" class="cat-btn"><i class="fa fa-th"></i>Categories</button>
+                                        <div class="cat-menu-inner">
+                                            <ul id="cat-menu">
+                                            
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                </div> 
+                            </div>
+                            <div class="col-lg-7 text-center">
+                                <div class="rs-menu-area">
+                                    <div class="main-menu pr-80">
+                                        <div class="mobile-menu">
+                                            <a class="rs-menu-toggle">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </div>
+                                        <nav class="rs-menu">
+                                            <ul class="nav-menu">
+                                                <li class="menu-item-has-children current-menu-item">
+                                                    <a href="#">Home</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="index.html">Home One</a> </li>
+                                                        <li><a href="index2.html">Home Two</a> </li>
+                                                        <li><a href="index3.html">Home Three</a> </li>
+                                                        <li><a href="index4.html">Home Four</a> </li>
+                                                        <li><a href="index5.html">Home Five</a>  </li>
+                                                        <li class="active"><a href="index6.html">Home Six</a> </li>
+                                                        <li><a href="index7.html">Home Seven</a> </li>
+                                                        <li><a href="index8.html">Home Eight</a> </li>
+                                                        <li><a href="index9.html">Home Nine</a> </li>
+                                                        <li><a href="index10.html">Home Ten</a> </li>
+                                                        <li><a href="index11.html">Home Eleven</a> </li>
+                                                        <li><a href="index12.html">Home Twelve</a> </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">About</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="about.html">About One</a> </li>
+                                                        <li><a href="about2.html">About Two</a> </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Courses</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="course.html">Courses One</a> </li>
+                                                        <li><a href="course2.html">Courses Two</a> </li>
+                                                        <li><a href="course3.html">Courses Three</a> </li>
+                                                        <li><a href="course4.html">Courses Four</a> </li>
+                                                        </li><li><a href="course5.html">Courses Five</a> </li>
+                                                        <li><a href="course6.html">Courses Six</a> </li>
+                                                        <li><a href="course-single.html">Courses Single</a> </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Pages</a>
+                                                    <ul class="sub-menu">
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Team</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="team.html">Team One</a></li>
+                                                                <li><a href="team2.html">Team Two</a></li>
+                                                                <li><a href="team-single.html">Team Single</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Event</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="events-style1.html">Event One</a></li>
+                                                                <li><a href="events-style2.html">Event Two</a></li>
+                                                                <li><a href="events-style3.html">Event Three</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Gallery</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="gallery-style1.html">Gallery One</a></li>
+                                                                <li><a href="gallery-style2.html">Gallery Two</a></li>
+                                                                <li><a href="gallery-style3.html">Gallery Three</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Shop</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="shop.html">Shop</a></li>
+                                                                <li><a href="shop-single.html">Shop Single</a></li>
+                                                                <li><a href="cart.html">Cart</a></li>
+                                                                <li><a href="checkout.html">Checkout</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Others</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="faq.html">FAQ</a></li>
+                                                                <li><a href="error.html">404 Page</a></li>
+                                                                <li><a href="login.html">Login</a></li>
+                                                                <li><a href="register.html">Register</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Blog</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Blog Sidebar</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="blog-left.html">Blog Left Sidebar</a></li>
+                                                                <li><a href="blog-right.html">Blog Right Sidebar</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Single Post</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="blog-post-left.html">Post Left Sidebar</a></li>
+                                                                <li><a href="blog-post-right.html">Post Right Sidebar</a></li>
+                                                                <li><a href="blog-single.html">Full Width Post</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Contact</a>
+                                                    <ul class="sub-menu">
+                                                       <li><a href="contact.html">Contact One</a> </li>
+                                                       <li><a href="contact2.html">Contact Two</a> </li>
+                                                       <li><a href="contact3.html">Contact Three</a> </li>
+                                                       <li><a href="contact4.html">Contact Four</a> </li>
+                                                    </ul>
+                                                </li>
+                                            </ul> <!-- //.nav-menu -->
+                                        </nav>
+                                    </div> <!-- //.main-menu -->
+                                    <div class="expand-btn-inner">
+                                        <ul>
+                                        <li class="icon-bar cart-inner mini-cart-active">
+                                                <a class="cart-icon">
+                                                    <!-- <span class="cart-count">2</span> -->
+                                                    <i class="flaticon-bag">{{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</i>
+                                                    
+                                                </a>
+                                                <div class="woocommerce-mini-cart text-left">
+                                                    <div class="cart-bottom-part">
+                                                        <ul class="cart-icon-product-list">
+                                                        @if(Session::has('cart'))
+                                                        @foreach(Session::get('cart')->items as $key => $value)
+                                                        
+                                                            <li class="display-flex">
+                                                                <div class="icon-cart">
+                                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <a href="cart.html">{{$value['item']->course_name}}</a><br>
+                                                                    <span class="quantity">{{$value['item']->course_price}} JD</span>
+                                                                </div>
+                                                                <div class="product-image">
+                                                                <!-- {{$item=$value['item']}} -->
+                                                                    <a href="cart.html"><img src='{{asset("images/courses/$item->course_image")}}' alt="Product Image"></a>
+                                                                </div>                       
+                                                            </li>
+                                                        @endforeach
+                                                        @else
+                                                            <!-- <li class="display-flex">
+                                                                <div class="icon-cart">
+                                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <a href="cart.html">Spirit Level</a><br>
+                                                                    <span class="quantity">1 × $30.00</span>
+                                                                </div>
+                                                                <div class="product-image">
+                                                                    <a href="cart.html"><img src="{{asset('assets/images/shop/2.jpg')}}" alt="Product Image"></a>
+                                                                </div>
+                                                            </li> -->
+                                                        @endif
+                                                        </ul>
+                                                       
+                                                        <div class="total-price text-center">
+                                                            <span class="subtotal">Subtotal:</span>
+                                                            @if(Session::has('cart'))
+                                                            <span class="current-price">{{Session::get('cart')->totalPrice}} JD</span>
+                                                            @else
+                                                            <span class="current-price">0 JD</span>
+                                                            @endif
+                                                        </div>
+
+                                                        <div class="cart-btn text-center">
+                                                            <a class="crt-btn btn1" href="/cart">View Cart</a>
+                                                            <a class="crt-btn btn2" href="checkout.html">Check Out</a>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </li>
+                                            <li>
+                                                <a class="hidden-xs rs-search" data-target=".search-modal" data-toggle="modal" href="#">
+                                                    <i class="flaticon-search"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <a id="nav-expander" class="nav-expander style3">
+                                            <div class="bar">
+                                                <span class="dot1"></span>
+                                                <span class="dot2"></span>
+                                                <span class="dot3"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menu End -->
+
+                <!-- Canvas Menu start -->
+                <nav class="right_menu_togle hidden-md">
+                    <div class="close-btn">
+                        <span id="nav-close">
+                            <div class="line">
+                                <span class="line1"></span><span class="line2"></span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="canvas-logo">
+                        <a href="index.html"><img src="{{asset('assets/images/logo-dark.png')}}" alt="logo"></a>
+                    </div>
+                    <div class="offcanvas-text">
+                        <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo  by the charms of pleasure of the moment data com so blinded by desire.</p>
+                    </div>
+                    <div class="offcanvas-gallery">
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{asset('assets/images/gallery/1.jpg')}}"><img src="{{asset('assets/images/gallery/1.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{asset('assets/images/gallery/2.jpg')}}"><img src="{{asset('assets/images/gallery/2.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{asset('assets/images/gallery/3.jpg')}}"><img src="{{asset('assets/images/gallery/3.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{asset('assets/images/gallery/4.jpg')}}"><img src="{{asset('assets/images/gallery/4.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{asset('assets/images/gallery/5.jpg')}}"><img src="{{asset('assets/images/gallery/5.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{asset('assets/images/gallery/6.jpg')}}"><img src="{{asset('assets/images/gallery/6.jpg')}}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="map-img">
+                        <img src="{{asset('assets/images/map.jpg')}}" alt="">
+                    </div>
+                    <div class="canvas-contact">
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Canvas Menu end -->
+            </header>
+            <!--Header End-->
+        </div>
+        <!--Full width header End-->
+
+		<!-- Main content Start -->
+        <div class="main-content">
+
+
+        
+        <!-- Breadcrumbs Start -->
+        <div class="rs-breadcrumbs breadcrumbs-overlay">
+                <!-- <div class="breadcrumbs-img">
+                    <img src="{{asset('assets/images/breadcrumbs/2.jpg')}}" alt="Breadcrumbs Image">
+                </div> -->
+                <div class="breadcrumbs-text white-color">
+                    <h1 class="page-title">My Account</h1>
+                    <ul>
+                        <li>
+                            <a class="active" href="index.html">Home</a>
+                        </li>
+                        <li>My Account</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Breadcrumbs End -->
+
+        <!-- My Account Section Start -->
+    		<div class="rs-login pt-100 pb-100 md-pt-70 md-pb-70">
+                <div class="container">
+                    <div class="noticed">
+                        <div class="main-part">                           
+                            <div class="method-account">
+                                <h2 class="login mb-4">Login</h2>
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+
+                            <div class="form-group row">
+                                <!-- <label for="email" class="col-md-4 col-form-label text-md-right">Email Address</label> -->
+
+                                <div class="col-md-12">
+                                    <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <!-- <label for="password" class="col-md-4 col-form-label text-md-right">Password</label> -->
+
+                                <div class="col-md-12">
+                                    <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                                        
+                                    
+                                    <!-- <input type="email mb-30" name="text" placeholder="E-mail" required="">
+                                    <input type="text" name="text" placeholder="Password" required=""> -->
+                                    <button type="submit" class="readon submit-btn">login</button>
+                                    <div class="last-password">
+                                        <p>Not registered? <a href="{{ route('register') }}">Create an account</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- My Account Section End --> 
+
+
+
+
+
+
+
+
+
+
+
+            
+
+        
+        </div> 
+        <!-- Main content End --> 
+
+        <!-- Footer Start -->
+        <footer id="rs-footer" class="rs-footer">
+            
+            <div class="footer-bottom">
+                <div class="container">                    
+                    <div class="row y-middle">
+                        <div class="col-lg-4 md-mb-20">
+                            <div class="footer-logo md-text-center">
+                                <a href="/index"><img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 md-mb-20">
+                            <div class="copyright text-center md-text-left">
+                                <p> Copyright 2021 © Taktika</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-right md-text-left">
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+        <!-- start scrollUp  -->
+        <div id="scrollUp">
+            <i class="fa fa-angle-up"></i>
+        </div>
+        <!-- End scrollUp  -->
+
+        <!-- Search Modal Start -->
+        <div aria-hidden="true" class="modal fade search-modal" role="dialog" tabindex="-1">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="flaticon-cross"></span>
+            </button>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="search-block clearfix">
+                        <form>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Search Here..." type="text">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search Modal End -->
+
+
+
+
+
+
+
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+        <!-- modernizr js -->
+        <script src="{{asset('assets/js/modernizr-2.8.3.min.js')}}"></script>
+        <!-- jquery latest version -->
+        <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+        <!-- Bootstrap v4.4.1 js -->
+        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+        <!-- Menu js -->
+        <script src="{{asset('assets/js/rsmenu-main.js')}}"></script> 
+        <!-- op nav js -->
+        <script src="{{asset('assets/js/jquery.nav.js')}}"></script>
+        <!-- owl.carousel js -->
+        <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+        <!-- Slick js -->
+        <script src="{{asset('assets/js/slick.min.js')}}"></script>
+        <!-- isotope.pkgd.min js -->
+        <script src="{{asset('assets/js/isotope.pkgd.min.js')}}"></script>
+        <!-- imagesloaded.pkgd.min js -->
+        <script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+        <!-- wow js -->
+        <script src="{{asset('assets/js/wow.min.js')}}"></script>
+        <!-- Skill bar js -->
+        <script src="{{asset('assets/js/skill.bars.jquery.js')}}"></script>
+        <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>        
+         <!-- counter top js -->
+        <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+        <!-- video js -->
+        <script src="{{asset('assets/js/jquery.mb.YTPlayer.min.js')}}"></script>
+        <!-- magnific popup js -->
+        <script src="{{asset('assets/js/jquery.magnific-popup.min.js')}}"></script>      
+        <!-- plugins js -->
+        <script src="{{asset('assets/js/plugins.js')}}"></script>
+        <!-- contact form js -->
+        <script src="{{asset('assets/js/contact.form.js')}}"></script>
+        <!-- main js -->
+        <script src="{{asset('assets/js/main.js')}}"></script>
+    </body>
+</html>
+
+
+
+@endsection
