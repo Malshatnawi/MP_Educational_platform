@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Category;
+
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +16,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+
+        $all_categories = Category::all();
+        $orders = auth()->user()->orders;
+        // dd($orders);
+        $user_courses = $orders->transform( function( $cart, $key) {
+            return unserialize($cart->cart);
+        });
+        
+        // dd($user_courses);
+        return view ('public_website.user_courses' , compact('all_categories', 'user_courses'));
     }
 
     /**
@@ -24,7 +35,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $all_orders = Order::all();
+        return view ('admin.manage_orders' , compact('all_orders'));
     }
 
     /**

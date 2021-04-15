@@ -80,7 +80,7 @@
                                     <div class="card-body">
                                         <div class="table-responsive ">
                                             <table class="table">
-                                                <thead>
+                                            <thead>
                                                     <tr>
                                                         <th scope="col">Order ID</th>
                                                         <th scope="col">User ID</th>
@@ -89,12 +89,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                @foreach ($all_orders as $key => $value)
                                                     <tr>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                        <td>@mdo</td>
+                                                        <td>{{$value->id}}</td>
+                                                        <td>{{$value->user_id}}</td>
+                                                        <td>{{$value->order_value}}</td>
+                                                        <td>{{$value->order_date}}</td>
                                                     </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

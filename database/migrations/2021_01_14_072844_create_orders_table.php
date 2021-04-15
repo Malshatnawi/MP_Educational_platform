@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('order_value');
             $table->timestamp('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->text('cart');
             $table->timestamps();
         });
     }

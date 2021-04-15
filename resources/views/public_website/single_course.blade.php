@@ -2,6 +2,32 @@
 
 @section('content')
 
+
+
+<?php 
+    $is_bought = false;
+?>
+
+@if($user_courses != null )
+@foreach($user_courses as $key => $value)
+@foreach($value->items as $key1 => $value1)
+<!-- {{$thecourses = $value1['item']}} -->
+
+@if($thecourses->id == $course->id)
+
+<?php 
+    $is_bought = true
+?>
+
+@endif
+
+
+@endforeach
+@endforeach
+
+
+@endif
+
 <!-- Intro Courses -->
 <section class="intro-section gray-bg pt-94 pb-100 md-pt-64 md-pb-70">
                 <div class="container">
@@ -65,7 +91,6 @@
                                             <div id="accordion" class="accordion-box">
                                             <!-- {{$LessonsCounter=0}} -->
                                                 @foreach ($course->units as $key => $value)
-                                                
                                                 <div class="card accordion block">
                                                     <div class="card-header" id="headingOne">
                                                         <h5 class="mb-0">
@@ -80,7 +105,27 @@
                                                             <div class="content">
                                                                 <div class="clearfix">
                                                                     <div class="pull-left">
+                                                                    @if($is_bought)
                                                                         <a class="popup-videos play-icon" href='{{asset("videos/lessons/$value1->lesson_content")}}'><i class="fa fa-play"></i>{{$value1->lesson_name}}</a>
+                                                                    @else
+                                                                        <a class="play-icon" onclick="event.preventDefault();myFunction()" href=''><i class="fa fa-lock"></i>{{$value1->lesson_name}}</a>
+                                                                    @endif
+
+                                                                    <script type='text/javascript'>
+                                                                        function myFunction()
+                                                                        {
+                                                                            console.log('whatever');
+                                                                            swal({
+                                                                                icon: 'error',
+                                                                                title: 'Oops...',
+                                                                                text: 'Purchase the course to unlock this item!',
+                                                                                footer: '<a href>Why do I have this issue?</a>'
+                                                                                })
+
+                                                                            
+                                                                        }
+                                                                    </script> 
+                                                                    
                                                                     </div>
                                                                     <div class="pull-right">
                                                                         <div class="minutes">{{$value1->lesson_duration}}</div>

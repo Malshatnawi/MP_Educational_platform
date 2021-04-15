@@ -525,6 +525,11 @@
                                     <!-- <input type="email mb-30" name="text" placeholder="E-mail" required="">
                                     <input type="text" name="text" placeholder="Password" required=""> -->
                                     <button type="submit" class="readon submit-btn">login</button>
+                                    <div>
+                                        <a href="{{ route('admin.password.request') }}" class="text-gray">
+                                            <small>{{ __('Forgot Your Password?') }}</small>
+                                        </a>
+                                    </div>
                                     <div class="last-password">
                                         <p>Not registered? <a href="#">Create an account</a></p>
                                     </div>

@@ -7,6 +7,7 @@ use App\Category;
 use App\Unit;
 use App\Cart;
 use App\Order;
+use Auth;
 
 use Session;
 use  Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -98,9 +99,29 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
+
+        if(Auth::check()){
+            $orders = auth()->user()->orders;
+            // dd($orders);
+            $user_courses = $orders->transform( function( $cart, $key) {
+                return unserialize($cart->cart);
+            });
+        }else{
+            $user_courses = null;
+        }
+
+        // dd($user_courses);
+        // $orders = auth()->user()->orders;
+        // dd($orders);
+        // $user_courses = $orders->transform( function( $cart, $key) {
+        //     return unserialize($cart->cart);
+        // });
+
+        // dd($user_courses);
+
         $all_categories=Category::all();
         $all_units = Unit::all();
-        return view ('public_website.single_course', compact('course','all_categories', 'all_units'));
+        return view ('public_website.single_course', compact('course','all_categories', 'all_units', 'user_courses' , "user_courses"));
     }
 
 
@@ -193,7 +214,9 @@ class CourseController extends Controller
             Order::create([
                 'user_id'                       => Auth::id(),
                 'order_value'                   => $request->amount,
+                'cart'                          =>serialize( session()->get('cart')),
             ]);
+
             // clearn cart 
 
             session()->forget('cart');  

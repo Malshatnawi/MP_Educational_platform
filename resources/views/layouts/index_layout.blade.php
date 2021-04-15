@@ -3,14 +3,14 @@
     <head> 
         <!-- meta tag -->
         <meta charset="utf-8">
-        <title>Educavo - Education HTML Template</title>
+        <title>Taktika Educational Platform</title>
         <meta name="description" content="">
         <!-- responsive tag -->
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- favicon -->
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/fav.png')}}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/taktika_logo.jpg')}}">
         <!-- Bootstrap v4.4.1 css -->
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
         <!-- font-awesome css -->
@@ -41,6 +41,9 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 
 
@@ -112,7 +115,7 @@
                                         <a class="dark-logo" href="/index">
                                             <img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="">
                                         </a>
-                                        <a class="light-logo" href="index.html">
+                                        <a class="light-logo" href="/index">
                                             <img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="">
                                         </a>
                                     </div>
@@ -139,122 +142,53 @@
                                         <nav class="rs-menu">
                                             <ul class="nav-menu">
                                                 <li class="menu-item-has-children current-menu-item">
-                                                    <a href="#">Home</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="index.html">Home One</a> </li>
-                                                        <li><a href="index2.html">Home Two</a> </li>
-                                                        <li><a href="index3.html">Home Three</a> </li>
-                                                        <li><a href="index4.html">Home Four</a> </li>
-                                                        <li><a href="index5.html">Home Five</a>  </li>
-                                                        <li class="active"><a href="index6.html">Home Six</a> </li>
-                                                        <li><a href="index7.html">Home Seven</a> </li>
-                                                        <li><a href="index8.html">Home Eight</a> </li>
-                                                        <li><a href="index9.html">Home Nine</a> </li>
-                                                        <li><a href="index10.html">Home Ten</a> </li>
-                                                        <li><a href="index11.html">Home Eleven</a> </li>
-                                                        <li><a href="index12.html">Home Twelve</a> </li>
-                                                    </ul>
+                                                    <a href="/index">Home</a>
                                                 </li>
                                                 <li class="menu-item-has-children">
                                                     <a href="#">About</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="about.html">About One</a> </li>
-                                                        <li><a href="about2.html">About Two</a> </li>
-                                                    </ul>
                                                 </li>
 
-                                                <li class="menu-item-has-children">
+                                                <!-- <li class="menu-item-has-children">
                                                     <a href="#">Courses</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="course.html">Courses One</a> </li>
-                                                        <li><a href="course2.html">Courses Two</a> </li>
-                                                        <li><a href="course3.html">Courses Three</a> </li>
-                                                        <li><a href="course4.html">Courses Four</a> </li>
-                                                        </li><li><a href="course5.html">Courses Five</a> </li>
-                                                        <li><a href="course6.html">Courses Six</a> </li>
-                                                        <li><a href="course-single.html">Courses Single</a> </li>
-                                                    </ul>
-                                                </li>
+                                                </li> -->
 
-                                                <li class="menu-item-has-children">
+                                                <!-- <li class="menu-item-has-children">
                                                     <a href="#">Pages</a>
-                                                    <ul class="sub-menu">
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Team</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="team.html">Team One</a></li>
-                                                                <li><a href="team2.html">Team Two</a></li>
-                                                                <li><a href="team-single.html">Team Single</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Event</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="events-style1.html">Event One</a></li>
-                                                                <li><a href="events-style2.html">Event Two</a></li>
-                                                                <li><a href="events-style3.html">Event Three</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Gallery</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="gallery-style1.html">Gallery One</a></li>
-                                                                <li><a href="gallery-style2.html">Gallery Two</a></li>
-                                                                <li><a href="gallery-style3.html">Gallery Three</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Shop</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="shop.html">Shop</a></li>
-                                                                <li><a href="shop-single.html">Shop Single</a></li>
-                                                                <li><a href="cart.html">Cart</a></li>
-                                                                <li><a href="checkout.html">Checkout</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Others</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="faq.html">FAQ</a></li>
-                                                                <li><a href="error.html">404 Page</a></li>
-                                                                <li><a href="login.html">Login</a></li>
-                                                                <li><a href="register.html">Register</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                </li> -->
+
+                                                @if(Auth::check())
+
+                                                <li class="menu-item-has-children">
+                                                    <a href="/orders">My Learning</a>
+                                                </li>
+
+                                                 <li class="menu-item-has-children">
+
+                                                <a href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                                 
+                                                </li>
+                                                
+                                                
+                                                
+                                                @else
+                                                
+                                                <li class="menu-item-has-children">
+                                                    <a href="/register">Register</a>
                                                 </li>
 
                                                 <li class="menu-item-has-children">
-                                                    <a href="#">Blog</a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="blog.html">Blog</a></li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Blog Sidebar</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="blog-left.html">Blog Left Sidebar</a></li>
-                                                                <li><a href="blog-right.html">Blog Right Sidebar</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="menu-item-has-children">
-                                                            <a href="#">Single Post</a>
-                                                            <ul class="sub-menu">
-                                                                <li><a href="blog-post-left.html">Post Left Sidebar</a></li>
-                                                                <li><a href="blog-post-right.html">Post Right Sidebar</a></li>
-                                                                <li><a href="blog-single.html">Full Width Post</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                    <a href="/login">Login</a>
                                                 </li>
 
-                                                <li class="menu-item-has-children">
-                                                    <a href="#">Contact</a>
-                                                    <ul class="sub-menu">
-                                                       <li><a href="contact.html">Contact One</a> </li>
-                                                       <li><a href="contact2.html">Contact Two</a> </li>
-                                                       <li><a href="contact3.html">Contact Three</a> </li>
-                                                       <li><a href="contact4.html">Contact Four</a> </li>
-                                                    </ul>
-                                                </li>
+                                                @endif
                                             </ul> <!-- //.nav-menu -->
                                         </nav>
                                     </div> <!-- //.main-menu -->
@@ -411,7 +345,7 @@
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
-                                <a href="index.html"><img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt=""></a>
+                                <a href="/index"><img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-4 md-mb-20">

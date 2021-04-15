@@ -32,39 +32,34 @@
                         <!-- basic form  -->
                         <!-- ============================================================== -->
 
-
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Add New Categories</h3>
+                                    <h3 class="section-title">Add New User</h3>
                                 </div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <form enctype="multipart/form-data">
+                                        <form enctype="multipart/form-data" method="post" action="/users" >
                                         @csrf
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Category Name</label>
-                                                <input id="inputText3" type="text" class="form-control" name="category_name">
+                                                <label for="inputText3" class="col-form-label">User Name</label>
+                                                <input id="inputText3" type="text" class="form-control" name="name">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Category Description</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="category_description"></textarea>
+                                                <label for="inputText3" class="col-form-label">User Email</label>
+                                                <input id="inputText3" type="text" class="form-control" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputText3" class="col-form-label">User Password</label>
+                                                <input id="inputText3" type="password" class="form-control" name="password">
                                             </div>
                                             
-                                            <label for="input-select">Category Image</label>
-                                            <div class="custom-file mb-3">
-                                                <label class="custom-file-label" for="customFile">Category Image</label>
-                                                <input type="file" class="custom-file-input" id="customFile" name="category_image">
-                                            </div>
-                                            
-                                            <button type="submit" class="btn btn-primary">Add Category</button>       
+                                            <button type="submit" class="btn btn-primary">Add User</button>       
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
-
-
+                        </div>
                         <!-- ============================================================== -->
                         <!-- end basic form  -->
                         <!-- ============================================================== -->
@@ -80,21 +75,30 @@
                                     <div class="card-body">
                                         <div class="table-responsive ">
                                             <table class="table">
-                                                <thead>
+                                            <thead>
                                                     <tr>
                                                         <th scope="col">User ID</th>
                                                         <th scope="col">User Name</th>
                                                         <th scope="col">User Email</th>
+                                                        <th scope="col">User Edit</th>
                                                         <th scope="col">User Delete</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                @foreach ($all_users as $key => $value)
                                                     <tr>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                        <td><button class="btn btn-danger">Delete</button></td>
+                                                        <td>{{$value->id}}</td>
+                                                        <td>{{$value->name}}</td>
+                                                        <td>{{$value->email}}</td>
+                                                        <td><a href="/users/{{$value->id}}/edit"><button class="btn btn-primary">Edit</button></a></td>
+                                                        <td>
+                                                        <form method="post" action="/users/{{$value->id}}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger">Delete</button>
+                                                        </form></td>
                                                     </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
