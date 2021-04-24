@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Password;
+use App\Category;
+
 
 class AdminForgotPasswordController extends Controller
 {
@@ -40,7 +42,8 @@ class AdminForgotPasswordController extends Controller
 
     public function showLinkRequestForm()
     {
-        return view('auth.passwords.email-admin');
+        $all_categories=Category::all();
+        return view('auth.passwords.email-admin', compact("all_categories"));
     }
 
 

@@ -4,7 +4,7 @@
 
 
 <!-- Breadcrumbs Start -->
-            <div class="rs-breadcrumbs breadcrumbs-overlay">
+            <!-- <div class="rs-breadcrumbs breadcrumbs-overlay">
                 <div class="breadcrumbs-img">
                     <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/nyc-skyline-christopher-haughian.jpg" alt="Breadcrumbs Image">
                 </div>
@@ -17,7 +17,7 @@
                         <li>Course</li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 <!-- Breadcrumbs End -->  
 
 
@@ -31,7 +31,7 @@
 <!-- Popular Courses Section Start -->
 <div id="rs-popular-courses" class="rs-popular-courses style3 orange-color pt-100 pb-100 md-pt-70 md-pb-70">
                 <div class="container">    
-                <div><h1 style="text-align:center;margin-bottom:1em">My courses</h1></div>              
+                <div style="background-color:#1c3348"><h2 style="text-align:center;margin-bottom:1em; color:#9cc63d">{{Auth::user()->name}}'s courses</h2></div>              
                     <div class="row">                     
                        
                        @foreach($user_courses as $key => $value)
@@ -46,12 +46,12 @@
                                 <div class="content-part">
                                     <span><a class="categories" href="#">{{$course->category->category_name}}</a></span>
                                     <ul class="meta-part">
-                                        <li class="user"><i class="fa fa-user"></i> 245</li>
-                                        <li><span class="price">{{$course->course_price}} JD</span></li>
+                                        <li class="user"><i class="fa fa-user"></i> Instructor: {{$course->course_instructor}} </li>
+                                        <!-- <li><span class="price">{{$course->course_price}} JD</span></li> -->
                                     </ul>
-                                    <h3 class="title"><a href="course-single.html">{{$course->course_name}}</a></h3>
+                                    <h3 class="title"><a href="/courses/{{$course->id}}" style="color:#4169E1	">{{$course->course_name}}</a></h3>
                                     <div class="bottom-part">
-                                        <div class="info-meta">
+                                        <!-- <div class="info-meta">
                                             <ul>                                                
                                                 <li class="ratings">
                                                     <i class="fa fa-star"></i>
@@ -59,9 +59,12 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
-                                                    
                                                 </li>
                                             </ul>
+                                        </div> -->
+
+                                        <div class="btn-part">
+                                            <a href="/courses/{{$course->id}}" style="color:#9cc63d; font-weight:bold">Resume course >></a>
                                         </div>
                                         
                                     </div>

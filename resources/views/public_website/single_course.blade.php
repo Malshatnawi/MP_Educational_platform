@@ -6,6 +6,7 @@
 
 <?php 
     $is_bought = false;
+    $duration = 0;
 ?>
 
 @if($user_courses != null )
@@ -43,15 +44,15 @@
                                     <li class="nav-item tab-btns">
                                         <a class="nav-link tab-btn" id="prod-curriculum-tab" data-toggle="tab" href="#prod-curriculum" role="tab" aria-controls="prod-curriculum" aria-selected="false">Curriculum</a>
                                     </li>
-                                    <li class="nav-item tab-btns">
+                                    <!-- <li class="nav-item tab-btns">
                                         <a class="nav-link tab-btn" id="prod-instructor-tab" data-toggle="tab" href="#prod-instructor" role="tab" aria-controls="prod-instructor" aria-selected="false">Instructor</a>
                                     </li>
                                     <li class="nav-item tab-btns">
                                         <a class="nav-link tab-btn" id="prod-faq-tab" data-toggle="tab" href="#prod-faq" role="tab" aria-controls="prod-faq" aria-selected="false">Faq</a>
-                                    </li>
-                                    <li class="nav-item tab-btns">
+                                    </li> -->
+                                    <!-- <li class="nav-item tab-btns">
                                         <a class="nav-link tab-btn" id="prod-reviews-tab" data-toggle="tab" href="#prod-reviews" role="tab" aria-controls="prod-reviews" aria-selected="false">Reviews</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                                 <div class="tab-content tabs-content" id="myTabContent">
                                     <div class="tab-pane tab fade show active" id="prod-overview" role="tabpanel" aria-labelledby="prod-overview-tab">
@@ -59,13 +60,15 @@
                                             <!-- Cource Overview -->
                                             <div class="course-overview">
                                                 <div class="inner-box">
-                                                    <h4>{{$course->course_name}}</h4>
+                                                    <h2 style="font-weight:bold">{{$course->course_name}}</h2>
+                                                    <br>
+                                                    <!-- <h3>About:</h3> -->
                                                     <p>{{$course->course_description}}</p>
-                                                    <ul class="student-list">
+                                                    <!-- <ul class="student-list">
                                                         <li>23,564 Total Students</li>
                                                         <li><span class="theme_color">4.5</span> <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span> (1254 Rating)</li>
                                                         <li>256 Reviews</li>
-                                                    </ul>
+                                                    </ul> -->
                                                     <h3>What you’ll learn?</h3>
                                                     <ul class="review-list">
                                                   
@@ -90,13 +93,18 @@
                                         <div class="content">
                                             <div id="accordion" class="accordion-box">
                                             <!-- {{$LessonsCounter=0}} -->
+                                            <!-- {{$unitsCounter=0}} -->
+                                            <!-- {{$duration = 0 }} -->
                                                 @foreach ($course->units as $key => $value)
+                                                <!-- {{$unitsCounter=$unitsCounter+1}} -->
                                                 <div class="card accordion block">
                                                     <div class="card-header" id="headingOne">
                                                         <h5 class="mb-0">
                                                             <button class="btn btn-link acc-btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{$value->unit_name}}</button>
                                                         </h5>
                                                     </div>
+                                                    
+
 
                                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body acc-content current">
@@ -128,11 +136,15 @@
                                                                     
                                                                     </div>
                                                                     <div class="pull-right">
-                                                                        <div class="minutes">{{$value1->lesson_duration}}</div>
+                                                                        <div class="minutes">{{$value1->lesson_duration}} minutes</div>
                                                                     </div>
+                                                                    <!-- {{$duration = $duration + $value1->lesson_duration}} -->
                                                                 </div>                                                                
                                                             </div>
+                                                            
                                                             @endforeach
+
+                                                                        
                                                             
                                                         </div>
                                                     </div>
@@ -389,36 +401,41 @@
                                             <span class="value">{{$LessonsCounter}}</span>
                                         </li>
                                        
-                                        <li class="quizzes-feature">
+                                        <!-- <li class="quizzes-feature">
                                             <i class="fa fa-puzzle-piece"></i>
                                             <span class="label">Quizzes</span>
                                             <span class="value">0</span>
-                                        </li>
+                                        </li> -->
                                        
                                         <li class="duration-feature">
                                             <i class="fa fa-clock-o"></i>
                                             <span class="label">Duration</span>
-                                            <span class="value">{{$course->course_duration}}</span>
+                                            <span class="value">{{$duration}} minutes / {{$course->course_duration}}</span>
                                         </li>
                                       
-                                        <li class="students-feature">
+                                        <!-- <li class="students-feature">
                                             <i class="fa fa-users"></i>
                                             <span class="label">Students</span>
                                             <span class="value">21</span>
-                                        </li>
+                                        </li> -->
                                        
                                         <li class="assessments-feature">
                                             <i class="fa fa-check-square-o"></i>
-                                            <span class="label">Assessments</span>
-                                            <span class="value">Yes</span>
+                                            <span class="label">Units</span>
+                                            <span class="value">{{$unitsCounter}}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 
+                                @if($is_bought == false)
                                 <div class="btn-part">
-                                    <a href="#" class="btn readon2 orange">{{$course->course_price}}</a>
-                                    <a href="{{ route('course.addtocart', ['course' => $course])}}" class="btn readon2 orange-transparent">Add to Cart</a>
+                                    <a href="#" class="btn readon2 orange">{{$course->course_price}} JOD</a>
+                                    <form method="post" action="{{ route('course.addtocart', ['course' => $course])}}">
+                                    @csrf
+                                    <button class="btn readon2 orange-transparent">Add to Cart</button>
+                                    </form>
                                 </div>
+                                @endif
                             </div>
                         </div>                        
                     </div>                

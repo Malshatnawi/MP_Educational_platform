@@ -138,7 +138,7 @@ class CourseController extends Controller
 
         // dd($request->session()->get('cart'));
 
-        return redirect('/index');
+        return redirect('/');
     }
 
     public function getCart(Request $request)
@@ -198,7 +198,7 @@ class CourseController extends Controller
             'currency' => 'USD',
             'source' => $request->stripeToken,
             'amount'   => $request->amount,
-            'description' => ' Test from laravel new app'
+            'description' => 'Test from laravel new app'
 
 
 
@@ -304,5 +304,18 @@ class CourseController extends Controller
     {
         $course->destroy($course->id);
         return redirect ('/courses/create');
+    }
+
+
+
+    public function search(){
+
+        $all_categories=Category::all();
+        $search_text = $_GET['query'];
+        $search_courses = Course::where('course_name', 'LIKE' , '%'.$search_text.'%')->get();
+        // dd($search_courses);
+        return view ('public_website.search', compact('search_courses', 'all_categories'));
+
+        
     }
 }

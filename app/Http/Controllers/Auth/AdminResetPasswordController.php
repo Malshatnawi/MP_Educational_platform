@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Password;
 use Auth;
+use App\Category;
+
 
 class AdminResetPasswordController extends Controller
 {
@@ -54,7 +56,8 @@ class AdminResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('auth.passwords.reset-admin')->with(
+        $all_categories=Category::all();
+        return view('auth.passwords.reset-admin', compact('all_categories'))->with(
             ['token' => $token, 'email' => $request->email]
         );
     }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Category;
+use Auth;
+
 
 class LoginController extends Controller
 {
@@ -20,12 +23,31 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
+    public function showLoginForm(){
+        $all_categories = Category::all();
+        return view ('auth.login' , compact('all_categories'));
+    }
+
+   
+
+    
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/index';
+    protected $redirectTo = '/';
+
+
+    public function logout()
+    {
+        Auth::logout();
+        Auth::guard('admin')->logout();
+
+        return redirect('/');
+    }
 
     /**
      * Create a new controller instance.

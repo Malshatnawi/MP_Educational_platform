@@ -43,6 +43,23 @@
         <![endif]-->
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
 
@@ -83,21 +100,21 @@
                             <div class="col-md-6">
                                 <ul class="topbar-contact">
                                     <li>
-                                        <a href="mailto:support@rstheme.com">📍 7th circle - Silawi complex No. 404</a>
-                                    </li>
+                                        <a href="https://www.google.com/maps/place/7th+Cir.,+Amman/@31.9594683,35.8554694,17z/data=!3m1!4b1!4m5!3m4!1s0x151ca10efc21a31d:0x6e8f71c86248f350!8m2!3d31.9594683!4d35.8576581">📍 7th circle - Silawi complex No. 404</a>
+                                    </li>              
                                     <li>
-                                        <a href="tel:+0885898745">🕘 Sun - Thu: 9:00am–4:00pm.</a>
+                                        <a href="#">🕘 Sun - Thu: 9:00am–4:00pm.</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-md-6 text-right">
                                 <ul class="topbar-right">
                                     <li class="login-register">
-                                        <a href="#">📞 +962 (6) 5815821 | +962 797627466</a>
+                                        <a href="tel:+962 797627466">📞 +962 (6) 5815821 | +962 797627466</a>
                                     </li>
-                                    <li class="btn-part">
-                                        <a class="apply-btn" href="#">Apply Now</a>
-                                    </li>
+                                    <!-- <li class="btn-part">
+                                        <a class="apply-btn" href="https://www.taktikaweb.com/">Visit Taktika</a>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -112,10 +129,10 @@
                             <div class="col-lg-5">
                                 <div class="logo-cat-wrap">
                                     <div class="logo-part pr-90">
-                                        <a class="dark-logo" href="/index">
+                                        <a class="dark-logo" href="/">
                                             <img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="">
                                         </a>
-                                        <a class="light-logo" href="/index">
+                                        <a class="light-logo" href="/">
                                             <img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="">
                                         </a>
                                     </div>
@@ -124,7 +141,7 @@
                                         <div class="cat-menu-inner">
                                             <ul id="cat-menu">
                                             @foreach($all_categories as $key => $value)
-                                                <li><a href="">{{$value->category_name}}</a></li>
+                                                <li><a href="/categories/{{$value->id}}">{{$value->category_name}}</a></li>
                                             @endforeach
                                             </ul>
                                         </div>
@@ -142,11 +159,15 @@
                                         <nav class="rs-menu">
                                             <ul class="nav-menu">
                                                 <li class="menu-item-has-children current-menu-item">
-                                                    <a href="/index">Home</a>
+                                                    <a href="/">Home</a>
                                                 </li>
                                                 <li class="menu-item-has-children">
-                                                    <a href="#">About</a>
+                                                    <a href="#" id="nav-expander">About</a>
                                                 </li>
+
+
+                                            
+                                                
 
                                                 <!-- <li class="menu-item-has-children">
                                                     <a href="#">Courses</a>
@@ -247,7 +268,7 @@
 
                                                         <div class="cart-btn text-center">
                                                             <a class="crt-btn btn1" href="/cart">View Cart</a>
-                                                            <a class="crt-btn btn2" href="checkout.html">Check Out</a>
+                                                            <a class="crt-btn btn2" href="/checkout">Check Out</a>
                                                         </div>
                                                     </div>
                                                 </div> 
@@ -258,13 +279,11 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        <a id="nav-expander" class="nav-expander style3">
+                                        <!-- <a id="nav-expander" class="nav-expander style3">
                                             <div class="bar">
-                                                <span class="dot1"></span>
-                                                <span class="dot2"></span>
-                                                <span class="dot3"></span>
+                                                <h5>h</h5>
                                             </div>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
@@ -283,37 +302,38 @@
                         </span>
                     </div>
                     <div class="canvas-logo">
-                        <a href="index.html"><img src="{{asset('assets/images/logo-dark.png')}}" alt="logo"></a>
+                        <a href="/"><img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt="logo"></a>
                     </div>
                     <div class="offcanvas-text">
-                        <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo  by the charms of pleasure of the moment data com so blinded by desire.</p>
+                        <p>Taktika is a training company that delivers practical training programs cross Middle East & North Africa for pharmaceutical &amp; non pharmaceutical companies. Our vast training experience cross region in training give us the advantage to deliver a state-of-the-art, unique, and practical training programs.
+Two strong points make us stand out: Our materials are up-to-date. we have the know-how to convert theory into practice</p>
                     </div>
                     <div class="offcanvas-gallery">
                         <div class="gallery-img">
-                            <a class="image-popup" href="{{asset('assets/images/gallery/1.jpg')}}"><img src="{{asset('assets/images/gallery/1.jpg')}}" alt=""></a>
+                            <a class="image-popup" href="https://www.taktikaweb.com/wp-content/uploads/2019/02/in.svg"><img src="https://www.taktikaweb.com/wp-content/uploads/2019/02/in.svg" alt=""></a>
                         </div>
                         <div class="gallery-img">
-                            <a class="image-popup" href="{{asset('assets/images/gallery/2.jpg')}}"><img src="{{asset('assets/images/gallery/2.jpg')}}" alt=""></a>
+                            <a class="image-popup" href="https://www.taktikaweb.com/wp-content/uploads/2019/02/cons.svg"><img src="https://www.taktikaweb.com/wp-content/uploads/2019/02/cons.svg" alt=""></a>
                         </div>
                         <div class="gallery-img">
-                            <a class="image-popup" href="{{asset('assets/images/gallery/3.jpg')}}"><img src="{{asset('assets/images/gallery/3.jpg')}}" alt=""></a>
+                            <a class="image-popup" href="https://www.taktikaweb.com/wp-content/uploads/2019/02/han.svg"><img src="https://www.taktikaweb.com/wp-content/uploads/2019/02/han.svg" alt=""></a>
                         </div>
                         <div class="gallery-img">
-                            <a class="image-popup" href="{{asset('assets/images/gallery/4.jpg')}}"><img src="{{asset('assets/images/gallery/4.jpg')}}" alt=""></a>
+                            <a class="image-popup" href="https://www.taktikaweb.com/wp-content/uploads/2019/02/ac.svg"><img src="https://www.taktikaweb.com/wp-content/uploads/2019/02/ac.svg" alt=""></a>
                         </div>
                         <div class="gallery-img">
-                            <a class="image-popup" href="{{asset('assets/images/gallery/5.jpg')}}"><img src="{{asset('assets/images/gallery/5.jpg')}}" alt=""></a>
+                            <a class="image-popup" href="{{asset('assets/images/gallery/5.jpg')}}"><img src="https://i1.wp.com/www.taktikaweb.com/wp-content/uploads/2019/01/6_hospital-512.png?w=512&ssl=1" alt=""></a>
                         </div>
-                        <div class="gallery-img">
+                        <!-- <div class="gallery-img">
                             <a class="image-popup" href="{{asset('assets/images/gallery/6.jpg')}}"><img src="{{asset('assets/images/gallery/6.jpg')}}" alt=""></a>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="map-img">
-                        <img src="{{asset('assets/images/map.jpg')}}" alt="">
+                        <img src="https://www.taktikaweb.com/wp-content/uploads/2020/07/17-1.jpg" alt="">
                     </div>
                     <div class="canvas-contact">
                         <ul class="social">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.facebook.com/taktika.jo"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -345,7 +365,7 @@
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
-                                <a href="/index"><img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt=""></a>
+                                <a href="/"><img src="https://www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-4 md-mb-20">
@@ -382,9 +402,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="search-block clearfix">
-                        <form>
+                        <form method="get" action="/search">
                             <div class="form-group">
-                                <input class="form-control" placeholder="Search Here..." type="text">
+                                <input class="form-control" name="query" placeholder="Search Here..." type="text">
+                                <br>
+                                <button class="btn btn-success">Search</button>
                             </div>
                         </form>
                     </div>

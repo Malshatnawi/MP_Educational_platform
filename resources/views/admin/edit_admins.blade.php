@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if(Auth::guard('admin')->user()->role !== "Super Admin")
+    @php
+        header("Location: " . URL::to('/categories/create'), true, 302);
+        exit();
+    @endphp
+@endif
+
 
             <div class="dashboard-ecommerce">
                 <div class="container-fluid dashboard-content ">

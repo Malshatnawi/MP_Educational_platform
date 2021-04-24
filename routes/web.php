@@ -114,7 +114,7 @@ Route::delete('/categories/{category}','CategoryController@destroy');
 Route::get('/categories/{category}/edit','CategoryController@edit');
 Route::put('/categories/{category}','CategoryController@update');
 // Homepage Route
-Route::get('/index','CategoryController@index')->name('homepage');
+Route::get('/','CategoryController@index')->name('homepage');
 //Grid Page
 Route::get('/categories/{category}','CategoryController@show');
 
@@ -131,7 +131,7 @@ Route::put('/courses/{course}','CourseController@update');
 //single course
 Route::get('/courses/{course}','CourseController@show');
 //course add to cart 
-Route::get('/addtocart/{course}','CourseController@AddToCart')->name('course.addtocart');
+Route::post('/addtocart/{course}','CourseController@AddToCart')->name('course.addtocart');
 //go to cart
 Route::get('/cart' , 'CourseController@getCart');
 //delete from cart
@@ -140,6 +140,8 @@ Route::get('cart/{key}/delete', 'CourseController@deleteFromCart')->name('delete
 Route::get('/checkout' , 'CourseController@getCheckout')->middleware('auth');
 //go to charge
 Route::post('/charge' , 'CourseController@getCharge');
+//search courses
+Route::get('/search','CourseController@search');
 
 
 
@@ -191,11 +193,15 @@ Route::put('/users/{user}','UserController@update');
 
 //Auth Routes
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/login' , 'Auth\LoginController@showLoginForm')->name('login');
+Route::get('/register' , 'Auth\RegisterController@showRegisterForm')->name('register');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function(){
 
     Route::get('/login' , 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/logout' , 'Auth\AdminLoginController@adminLogout')->name('admin.logout');
     Route::post('/login' , 'Auth\AdminLoginController@login')->name('admin.login.submit');
     // Route::get("/", "AdminController@show")->name('admin.dashboard');
 
@@ -212,8 +218,14 @@ Route::prefix('admin')->group(function(){
 
 
 
+
+
+
 // Orders Routes
 Route::get('/orders','OrderController@index')->name('order.index')->middleware('auth');
 Route::get('/orders/create','OrderController@create')->name('order.dashboard');
+
+
+
 
 

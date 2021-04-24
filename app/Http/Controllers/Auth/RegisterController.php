@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Category;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/index';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -38,6 +39,12 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+
+    public function showRegisterForm(){
+        $all_categories = Category::all();
+        return view ('auth.register' , compact('all_categories'));
     }
 
     /**

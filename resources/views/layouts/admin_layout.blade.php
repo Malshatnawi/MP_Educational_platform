@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('admin_assets/vendor/bootstrap/css/bootstrap.min.css')}}">
     <link href="{{asset('admin_assets/vendor/fonts/circular-std/style.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/taktika_logo.jpg')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/libs/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/vendor/fonts/fontawesome/css/fontawesome-all.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/vendor/charts/chartist-bundle/chartist.css')}}">
@@ -15,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('admin_assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/vendor/charts/c3charts/c3.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>Admin Dashboard - Taktika Educational platform</title>
 </head>
 
 <body>
@@ -28,18 +29,18 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">Taktika</a>
+                <a class="navbar-brand" href="index.html"><img src="https://i2.wp.com/www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png?fit=475%2C134&ssl=1" alt="logo" style="width:3.5em; height:1em" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
                                 <input class="form-control" type="text" placeholder="Search..">
                             </div>
-                        </li>
-                        <li class="nav-item dropdown notification">
+                        </li> -->
+                        <!-- <li class="nav-item dropdown notification">
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                 <li>
@@ -85,8 +86,8 @@
                                     <div class="list-footer"> <a href="#">View all notifications</a></div>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item dropdown connection">
+                        </li> -->
+                        <!-- <li class="nav-item dropdown connection">
                             <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
                             <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
                                 <li class="connection-list">
@@ -117,16 +118,16 @@
                                     <div class="conntection-footer"><a href="#">More</a></div>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('admin_assets/images/avatar-1.jpg')}}" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://www.pngitem.com/pimgs/m/128-1280822_check-mark-box-clip-art-blue-admin-icon.png" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+                                    <h5 class="mb-0 text-white nav-user-name">{{ Auth::guard('admin')->user()->name }}</h5>
                                     <span class="status"></span><span class="ml-2">Available</span>
                                 </div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                                <a class="dropdown-item" href="/"><i class="fa fa-users"></i> Public Dashboard</a>
+                                <a class="dropdown-item" href="https://www.taktikaweb.com/"><i class="fa fa-home"></i> Taktika Main Website</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -173,9 +174,11 @@
                             <li class="nav-item ">
                                 <a class="nav-link " href="/lessons/create"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Manage Lessons<span class="badge badge-success">6</span></a>   
                             </li>
+                            @if(Auth::guard('admin')->user()->role == "Super Admin")
                             <li class="nav-item ">
                                 <a class="nav-link " href="/admins/create"  aria-expanded="false" ><i class="fa fa-fw fa-user-circle"></i>Manage Admins<span class="badge badge-success">6</span></a>   
                             </li>
+                            @endif
                             <li class="nav-item ">
                                 <a class="nav-link " href="/units/create"  aria-expanded="false" ><i class="fas fa-fw fa-table"></i>Manage Units<span class="badge badge-success">6</span></a>   
                             </li>
@@ -204,13 +207,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                             Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                             Copyright © 2021 Taktika. All rights reserved.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
+                                <a href="https://www.taktikaweb.com/contact/">Contact Us</a>
                             </div>
                         </div>
                     </div>

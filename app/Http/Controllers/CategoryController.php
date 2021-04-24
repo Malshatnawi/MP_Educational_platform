@@ -88,7 +88,7 @@ class CategoryController extends Controller
     {
         $all_categories = Category::all();
         $courses= $category->courses;
-        return view ('public_website.courses_grid', compact('courses','all_categories'));
+        return view ('public_website.courses_grid', compact('courses','all_categories', 'category'));
 
     }
 

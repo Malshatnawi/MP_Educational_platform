@@ -41,6 +41,9 @@ class AdminLoginController extends Controller
         }
 
 
+       
+
+
         // if (Auth::attempt(['email' => $request->email , 'password'=>$request->password], $request->remember)){
 
         //         return redirect()->intended(route('home'));
@@ -56,4 +59,11 @@ class AdminLoginController extends Controller
 
 
     }
+
+    // public function adminLogout()
+    // {
+    //     $this::guard()->logout();
+
+    //     return redirect('/');
+    // }
 }
