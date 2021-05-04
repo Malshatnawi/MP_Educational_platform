@@ -29,7 +29,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html"><img src="https://i2.wp.com/www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png?fit=475%2C134&ssl=1" alt="logo" style="width:3.5em; height:1em" /></a>
+                <a class="navbar-brand" href="{{route('homepage')}}"><img src="https://i2.wp.com/www.taktikaweb.com/wp-content/uploads/2018/11/Taktika-Logo-2.png?fit=475%2C134&ssl=1" alt="logo" style="width:3.5em; height:1em" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

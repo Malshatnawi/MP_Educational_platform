@@ -24,6 +24,7 @@ class CreateCoursesTable extends Migration
             $table->string('course_duration');
             $table->string('course_instructor');
             $table->text('course_trailer');
+            $table->string('course_prerequisites');
             $table->timestamps();
         });
     }

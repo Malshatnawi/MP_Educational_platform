@@ -54,7 +54,8 @@ class CourseController extends Controller
             'course_price' =>'required',
             'course_duration' => 'required',
             'course_instructor' => 'required',
-            'course_trailer' => 'required'
+            'course_trailer' => 'required',
+            'course_prerequisites' => 'required'
 
         ]);
 
@@ -85,6 +86,7 @@ class CourseController extends Controller
             'course_duration'               =>$request->course_duration,
             'course_instructor'             =>$request->course_instructor,
             'course_trailer'                =>$trailer_video,
+            'course_prerequisites'          =>$request->course_prerequisites
         ]);
 
         return redirect('/courses/create');
@@ -138,7 +140,9 @@ class CourseController extends Controller
 
         // dd($request->session()->get('cart'));
 
-        return redirect('/');
+        // return redirect('/');
+        return redirect()->route('homepage')->with('success', " Successfully Added. ");
+
     }
 
     public function getCart(Request $request)
@@ -166,7 +170,8 @@ class CourseController extends Controller
         $request->session()->put('cart' , $cart);
 
         return redirect('/cart');
-       
+        // return redirect()->route('cart')->with('success', " Item Removed. ");
+
     }
 
 
@@ -215,6 +220,7 @@ class CourseController extends Controller
                 'user_id'                       => Auth::id(),
                 'order_value'                   => $request->amount,
                 'cart'                          =>serialize( session()->get('cart')),
+                'phone'                         =>$request->phone
             ]);
 
             // clearn cart 
@@ -258,7 +264,8 @@ class CourseController extends Controller
             'course_price' =>'required',
             'course_duration' => 'required',
             'course_instructor' => 'required',
-            'course_trailer' => 'required'
+            'course_trailer' => 'required',
+            'course_prerequisites' => 'required'
 
         ]);
 
@@ -289,6 +296,7 @@ class CourseController extends Controller
             'course_duration'               =>$request->course_duration,
             'course_instructor'             =>$request->course_instructor,
             'course_trailer'                =>$trailer_video,
+            'course_prerequisites'          =>$request->course_prerequisites
         ]);
 
         return redirect('/courses/create');

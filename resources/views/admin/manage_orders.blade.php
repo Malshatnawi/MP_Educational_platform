@@ -86,6 +86,7 @@
                                                         <th scope="col">User ID</th>
                                                         <th scope="col">Order Value</th>
                                                         <th scope="col">Order Date</th>
+                                                        <th scope="col">User Phone No.</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -95,6 +96,7 @@
                                                         <td>{{$value->user_id}}</td>
                                                         <td>{{$value->order_value}}</td>
                                                         <td>{{$value->order_date}}</td>
+                                                        <td>{{$value->phone}}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>

@@ -21,7 +21,7 @@ class AdminLoginController extends Controller
         return view ('auth.admin_login' , compact('all_categories'));
     }
 
-    public function login(Request $request){
+    public function admin_login(Request $request){
 
         $this->validate($request, [
 
@@ -36,7 +36,8 @@ class AdminLoginController extends Controller
 
                     // If successful, then redirect to their intended location
 
-            return redirect()->intended(route('admin.dashboard'));
+            // return redirect()->intended(route('user.dashboard'));
+            return redirect()->route('user.dashboard');
 
         }
 

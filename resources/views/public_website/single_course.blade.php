@@ -78,13 +78,15 @@
                                                         
                                                     </ul>
                                                     <h3>Requirements</h3>
-                                                    <ul class="review-list">
+                                                    <p>{{$course->course_prerequisites}}</p>
+
+                                                    <!-- <ul class="review-list">
                                                         <li>Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo</li>
                                                         <li>Ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel.</li>
                                                         <li>Phasellus enim magna, varius et commodo ut.</li>
                                                         <li>Varius et commodo ut, ultricies vitae velit. Ut nulla tellus.</li>
                                                         <li>Phasellus enim magna, varius et commodo ut.</li>
-                                                    </ul>                                                                                                          
+                                                    </ul>                                                                                                           -->
                                                 </div>
                                             </div>                                                
                                         </div>

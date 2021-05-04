@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('order_value');
             $table->timestamp('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->text('cart');
+            $table->string('phone');
             $table->timestamps();
         });
     }

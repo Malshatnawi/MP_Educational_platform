@@ -78,7 +78,11 @@
                                             <div class="custom-file mb-3">
                                                 <label class="custom-file-label" for="customFile">Course Trailer</label>
                                                 <input type="file" class="custom-file-input" id="customFile" name="course_trailer">
-                                            </div>   
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Course Prerequisites</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="course_prerequisites"></textarea>
+                                            </div>  
                                             <button type="submit" class="btn btn-primary">Add Course</button>       
                                         </form>
                                     </div>
@@ -105,9 +109,9 @@
                                                         <th scope="col">Course ID</th>
                                                         <th scope="col">Course Name</th>
                                                         <th scope="col">Category ID</th>
-                                                        <th scope="col">Course Description</th>
+                                                        <!-- <th scope="col">Course Description</th> -->
                                                         <th scope="col">Course Image</th>
-                                                        <th scope="col">Course Price</th>
+                                                        <th scope="col">Course Price (JOD)</th>
                                                         <th scope="col">Course Duration</th>
                                                         <th scope="col">Course Instructor</th>
                                                         <th scope="col">Course Trailer</th>
@@ -121,7 +125,7 @@
                                                         <td>{{$value->id}}</td>
                                                         <td>{{$value->course_name}}</td>
                                                         <td>{{$value->category_id}}</td>
-                                                        <td>{{$value->course_description}}</td>
+                                                        <!-- <td>{{$value->course_description}}</td> -->
                                                         <td><img src='{{asset("images/courses/$value->course_image")}}' width="150em" height="150em" alt=""></td>
                                                         <td>{{$value->course_price}}</td>
                                                         <td>{{$value->course_duration}}</td>

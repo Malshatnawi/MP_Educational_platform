@@ -79,6 +79,10 @@
                                             <div class="custom-file mb-3">
                                                 <label class="custom-file-label" for="customFile">Course Trailer</label>
                                                 <input type="file" class="custom-file-input" id="customFile" name="course_trailer">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Course Prerequisites</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="course_prerequisites">{{$course->course_prerequisites}}</textarea>
                                             </div>   
                                             <button type="submit" class="btn btn-primary">Update Course</button>       
                                         </form>
